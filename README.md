@@ -1,12 +1,23 @@
 # Portfolio — Akshith Kumar Y V
 
-A static, no-build portfolio site. Three files, zero dependencies, deploy-ready.
+Live: **https://akshith-2002.github.io/Resume/**
+
+A static, no-build portfolio site. Hand-tuned, zero dependencies, deploy-ready.
+
+## Files
 
 ```
-index.html      — markup
-styles.css      — design system + components
-script.js       — clock, theme toggle, count-ups, command palette
-DESIGN.md       — design system source of truth (read me before changing visuals)
+index.html              — main portfolio (hero, dossier, experience, contact)
+case-stackd.html        — No. 01 · StackD Smart Vending
+case-rayna.html         — No. 02 · Rayna Tours marketing/ops automation
+case-hackation.html     — No. 03 · HackAtion 2025 (AI Agents winner)
+case-blive.html         — No. 04 · BLive EZY EV fleet
+case-opencredits.html   — No. 05 · Open Credits AI-assisted EdTech
+cv.html                 — printable resume (Cmd+P → save PDF)
+styles.css              — design system + components
+script.js               — clock, theme, count-ups, command palette
+favicon.svg             — operator mark
+DESIGN.md               — design system source of truth
 ```
 
 ## Run locally
@@ -16,20 +27,13 @@ python3 -m http.server 4173
 # open http://127.0.0.1:4173/
 ```
 
-Or just double-click `index.html` — it works as a `file://` page too (though
-Cmd+K and a few features need an HTTP origin).
-
 ## Deploy
 
-The site is plain static HTML/CSS/JS. Drag-drop into:
+The site auto-deploys via GitHub Pages on push to `main`. The Pages build
+serves the repo root, so any push refreshes the live site within ~1 minute.
 
-- **Netlify** — drop the folder onto `app.netlify.com/drop`
-- **Vercel** — `npx vercel --prod`
-- **GitHub Pages** — push to a repo, enable Pages on `main` branch
-- **Cloudflare Pages** — connect the repo, build command empty, output dir `.`
-
-For your existing `akshithyv.netlify.app`: in the Netlify dashboard, set this
-folder as the deploy root or drop it directly.
+For other hosts (Netlify, Vercel, Cloudflare Pages): point the deploy at the
+repo root with no build command — it's plain static.
 
 ## Design system
 
@@ -41,20 +45,24 @@ The dark theme is the brand default; light is an opt-in toggle.
 
 | To change | Edit |
 |---|---|
-| Copy / projects / wording | `index.html` |
+| Copy / projects / wording on home | `index.html` |
+| A specific case study | `case-<name>.html` |
+| Resume content | `cv.html` |
 | Colors / type / spacing | `styles.css` (`:root` tokens) + `DESIGN.md` |
 | Theme behavior, clock, command palette | `script.js` |
 
 ## Notable interactions
 
-- **Cmd+K (or `/`)** — command palette: jump to sections, copy contact, toggle theme, save as PDF
-- **Theme toggle (top right)** — dark ↔ light, saved to localStorage
-- **Cursor-tracked grid** — hero background gridlines reveal under the cursor
-- **Count-up KPIs** — KPI numbers animate when scrolled into view
-- **`prefers-reduced-motion`** — all motion is dropped to instant for users who request it
-- **Print** — sticky chrome is stripped; you get a clean printable / PDF resume page
+- **Cmd+K (or `/`)** — command palette: jump to any section, jump to any case study, open CV, copy contact, toggle theme, save as PDF.
+- **Cursor-tracked grid** — hero gridlines reveal under the cursor (radial mask).
+- **Count-up KPIs** — KPI numbers animate when scrolled into view (`9`, `30%`, `4,000/day`, etc.).
+- **Live IST clock** — ticks in topbar and footer status strip.
+- **Theme toggle** — dark ↔ light, saved to localStorage. Dark is the brand default.
+- **`prefers-reduced-motion`** — all motion drops to instant for users who request it.
+- **Print stylesheet** — strips chrome on `cv.html` for a clean A4-ish PDF.
 
 ## Browser support
 
-Built for evergreens (Chrome/Edge/Firefox/Safari current). Uses CSS variables,
-`color-mix()`, `clamp()`, `@container`-free grid. No polyfills.
+Built for evergreens (Chrome / Edge / Firefox / Safari current).
+Uses CSS variables, `color-mix()`, `clamp()`, `prefers-color-scheme`.
+No polyfills, no JS framework, no bundler.

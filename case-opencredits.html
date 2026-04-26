@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>Open Credits — AI-Assisted EdTech — Akshith Kumar Y V</title>
+<meta name="description" content="Owned end-to-end product delivery as PM. Built the entire platform via AI-assisted development with analytics pipelines and event-tracking specs.">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,30&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css?v=8">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<a href="index.html#main" class="skip-link">Skip to content</a>
+
+<header class="topbar" role="banner">
+  <a href="index.html#top" class="brand" aria-label="Back to portfolio">
+    <span class="brand-mark" aria-hidden="true">A</span>
+    <span class="brand-mono">akshith.yv</span>
+  </a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="index.html#dossier"><span class="num">01</span> Work</a>
+    <a href="index.html#approach"><span class="num">02</span> Approach</a>
+    <a href="index.html#capabilities"><span class="num">03</span> Stack</a>
+    <a href="index.html#contact"><span class="num">04</span> Contact</a>
+  </nav>
+  <div class="topbar-actions">
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" aria-pressed="false">
+      <span class="theme-toggle-track" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<article class="case-page">
+  <a href="index.html#dossier" class="case-back">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11 7H3m0 0l4-4m-4 4l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+    Back to dossier
+  </a>
+
+  <div class="case-page-meta">
+    <span class="case-page-num">No. 05</span>
+    <span class="pill pill-shipped">SHIPPED</span>
+    <span>2024 — 2025</span>
+    <span>·</span>
+    <span>EDTECH</span>
+  </div>
+
+  <h1 class="case-page-title">Open Credits</h1>
+  <p class="case-page-tag">// AI-assisted EdTech platform — vibe-coded build</p>
+
+  <div class="case-page-kpis kpis-3">
+    <div class="kpi"><span class="kpi-num accent">100<span class="dim">%</span></span><span class="kpi-label">vibe-coded build</span></div>
+    <div class="kpi"><span class="kpi-num">2</span><span class="kpi-label">flows · learning · analytics</span></div>
+    <div class="kpi"><span class="kpi-num">E2E</span><span class="kpi-label">PM ownership</span></div>
+  </div>
+
+  <div class="case-meta-grid">
+    <div>
+      <h3>Role</h3>
+      <p>Project Manager and builder. Wrote the spec, ran AI-assisted
+        full-stack development for the platform, set up analytics pipelines
+        and event-tracking, and shipped to learners. The whole vertical, in
+        one head.</p>
+    </div>
+    <div>
+      <h3>Stack</h3>
+      <ul>
+        <li>Vibe coding (AI-assisted)</li><li>SQL</li><li>n8n</li><li>Event tracking</li><li>Analytics pipelines</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="case-section-label">Context</p>
+    <h2>Can a PM build the whole thing if the spec is sharp?</h2>
+    <p class="lede">
+      Open Credits started as a question more than a brief: how much of an
+      EdTech platform can a PM build solo, end-to-end, when the build tool
+      is AI-assisted development and the work is mostly translation between
+      a clear spec and the model that's writing the code?
+    </p>
+    <p>
+      The answer turned out to be: more than I expected, because the
+      bottleneck stops being syntax and starts being the precision of the
+      thing you're asking for.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">Approach</p>
+    <h2>Spec sharpness compounds</h2>
+    <p>
+      Vibe coding doesn't fail because the model can't write code — it
+      writes code instantly. It fails when the spec is fuzzy, because then
+      the code is fluent but wrong. So the work moves upstream: define the
+      data model, the event schema, the user flows, the acceptance criteria,
+      with more precision than you would for human engineers, because there's
+      no implicit common-sense filter to catch ambiguity.
+    </p>
+    <ul>
+      <li><strong>Data model first.</strong> Learner, course, module, attempt, completion, credit. Five entities, every relationship explicit, before any UI thinking.</li>
+      <li><strong>Event schema second.</strong> Every meaningful learner action emits a typed event. The analytics dashboard wasn't a downstream afterthought — the events were the spec.</li>
+      <li><strong>Flow specs third.</strong> Onboarding, course discovery, lesson consumption, attempt + grade, credit issuance. Each flow as a state machine with named transitions.</li>
+      <li><strong>Then build.</strong> The actual coding was hours, not weeks, because the hard work was already done.</li>
+    </ul>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">Architecture</p>
+    <h2>Two flows, shared event spine</h2>
+    <pre class="case-diagram">
+[ Learner ]
+   <span class="arrow">↓</span>
+[ Learning surface ]  ─── events ───▶ [ Event spine ]
+   <span class="label">// course · lesson · attempt</span>            <span class="arrow">↓</span>
+                                       [ Analytics pipeline ]
+                                            <span class="arrow">↓</span>
+                                       [ Reporting / insights ]
+                                            <span class="arrow">↑</span>
+[ n8n automations ] ── triggers ─────────────┘
+   <span class="label">// reminders · grade nudges · cohort comms</span>
+    </pre>
+    <p>
+      The event spine is the architectural decision that paid back. Every
+      action becomes a typed event. Reporting reads from the event log.
+      Automations subscribe to event patterns. Add a new flow later? Define
+      its events, then build the UI. The plumbing already exists.
+    </p>
+  </section>
+
+  <p class="case-pull">
+    Vibe coding works when the spec is sharp. The model is faster than you
+    at writing code. It is not faster than you at deciding what the code
+    should do.
+  </p>
+
+  <section class="case-section">
+    <p class="case-section-label">Outcome</p>
+    <h2>Shipped — and proved a thesis</h2>
+    <p>
+      The platform shipped with both flows working: the learner side
+      (course consumption, attempts, credits) and the analytics side
+      (engagement, completion, cohort performance). All built solo as PM
+      via AI-assisted development.
+    </p>
+    <p>
+      Bigger outcome than the build itself: a working answer to "can a
+      sharp PM ship a platform?" — yes, when the constraint stops being
+      typing speed and becomes spec quality. That changes how I scope
+      future engagements.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">What I'd do differently</p>
+    <h2>Write a test plan before the spec</h2>
+    <p>
+      The biggest learning: AI-assisted code lands quickly, but verifying
+      it lands <em>correctly</em> is its own problem. If I started this
+      again I'd write the test plan — what acceptance scenarios prove this
+      flow works, what failure modes I want to catch — before I wrote the
+      spec. The model can write tests too, but only as well as the cases
+      I describe.
+    </p>
+  </section>
+
+  <nav class="case-pager" aria-label="More case studies">
+    <a href="case-blive.html" class="prev">
+      <span class="pager-key">← No. 04</span>
+      <span class="pager-title">BLive EZY</span>
+    </a>
+    <a href="index.html#dossier" class="next">
+      <span class="pager-key">All cases →</span>
+      <span class="pager-title">Back to dossier</span>
+    </a>
+  </nav>
+</article>
+</main>
+
+<footer class="status-strip" role="contentinfo">
+  <span class="strip-cell strip-live">
+    <span class="dot dot-live" aria-hidden="true"></span>
+    <span>OPERATOR ONLINE</span>
+  </span>
+  <span class="strip-cell"><span class="strip-key">LOC</span> Bengaluru</span>
+  <span class="strip-cell"><span class="strip-key">UTC</span> +5:30</span>
+  <span class="strip-cell"><span class="strip-key">CLK</span> <span data-clock>—</span></span>
+  <span class="strip-cell strip-cell-flex"></span>
+  <span class="strip-cell strip-build">© 2026 · Akshith Kumar Y V</span>
+</footer>
+
+<script src="script.js?v=8" defer></script>
+</body>
+</html>

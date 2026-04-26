@@ -126,13 +126,27 @@
   const cmdList = $('#cmd-list');
   const cmdTrigger = $('[data-cmd-trigger]');
 
+  // root path so commands work the same on the index page and on case pages
+  const HOME = (() => {
+    const p = location.pathname;
+    if (p.endsWith('/') || p.endsWith('/index.html')) return '';
+    // we're on a sub-page (case-*.html, cv.html); jumps need the index page
+    return 'index.html';
+  })();
+
   const COMMANDS = [
-    { icon: '01', label: 'Jump to Dossier', meta: 'NAV', run: () => location.hash = '#dossier' },
-    { icon: '02', label: 'Jump to Approach', meta: 'NAV', run: () => location.hash = '#approach' },
-    { icon: '03', label: 'Jump to Stack', meta: 'NAV', run: () => location.hash = '#capabilities' },
-    { icon: '04', label: 'Jump to Experience', meta: 'NAV', run: () => location.hash = '#experience' },
-    { icon: '05', label: 'Jump to Contact', meta: 'NAV', run: () => location.hash = '#contact' },
-    { icon: '↑', label: 'Back to top', meta: 'NAV', run: () => location.hash = '#top' },
+    { icon: '01', label: 'Dossier — work overview', meta: 'NAV', run: () => location.href = HOME + '#dossier' },
+    { icon: '02', label: 'Approach', meta: 'NAV', run: () => location.href = HOME + '#approach' },
+    { icon: '03', label: 'Stack — capabilities', meta: 'NAV', run: () => location.href = HOME + '#capabilities' },
+    { icon: '04', label: 'Experience', meta: 'NAV', run: () => location.href = HOME + '#experience' },
+    { icon: '05', label: 'Contact', meta: 'NAV', run: () => location.href = HOME + '#contact' },
+    { icon: '↑', label: 'Back to top', meta: 'NAV', run: () => location.href = HOME + '#top' },
+    { icon: '↗', label: 'Open CV — printable resume', meta: 'PAGE', run: () => location.href = 'cv.html' },
+    { icon: '①', label: 'Case · StackD Smart Vending', meta: 'CASE', run: () => location.href = 'case-stackd.html' },
+    { icon: '②', label: 'Case · Rayna Tours', meta: 'CASE', run: () => location.href = 'case-rayna.html' },
+    { icon: '③', label: 'Case · HackAtion 2025 (won)', meta: 'CASE', run: () => location.href = 'case-hackation.html' },
+    { icon: '④', label: 'Case · BLive EZY', meta: 'CASE', run: () => location.href = 'case-blive.html' },
+    { icon: '⑤', label: 'Case · Open Credits', meta: 'CASE', run: () => location.href = 'case-opencredits.html' },
     { icon: '✉', label: 'Copy email — akshithy888@gmail.com', meta: 'COPY', run: () => copy('akshithy888@gmail.com') },
     { icon: '☎', label: 'Copy phone — +91 90195 33772', meta: 'COPY', run: () => copy('+919019533772') },
     { icon: '↗', label: 'Open LinkedIn', meta: 'LINK', run: () => window.open('https://linkedin.com/in/akshithyv', '_blank', 'noopener') },

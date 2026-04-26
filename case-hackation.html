@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>HackAtion 2025 — AI Agents Track Winner — Akshith Kumar Y V</title>
+<meta name="description" content="Won the AI Agents track at HackAtion 2025 with an EV-charging assistant: slot booking, payment, and live availability over Telegram. Built with n8n + GPT.">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,30&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css?v=8">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<a href="index.html#main" class="skip-link">Skip to content</a>
+
+<header class="topbar" role="banner">
+  <a href="index.html#top" class="brand" aria-label="Back to portfolio">
+    <span class="brand-mark" aria-hidden="true">A</span>
+    <span class="brand-mono">akshith.yv</span>
+  </a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="index.html#dossier"><span class="num">01</span> Work</a>
+    <a href="index.html#approach"><span class="num">02</span> Approach</a>
+    <a href="index.html#capabilities"><span class="num">03</span> Stack</a>
+    <a href="index.html#contact"><span class="num">04</span> Contact</a>
+  </nav>
+  <div class="topbar-actions">
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" aria-pressed="false">
+      <span class="theme-toggle-track" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<article class="case-page">
+  <a href="index.html#dossier" class="case-back">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11 7H3m0 0l4-4m-4 4l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+    Back to dossier
+  </a>
+
+  <div class="case-page-meta">
+    <span class="case-page-num">No. 03</span>
+    <span class="pill pill-won">WON</span>
+    <span>2025</span>
+    <span>·</span>
+    <span>HACKATHON · AI AGENTS TRACK</span>
+  </div>
+
+  <h1 class="case-page-title">HackAtion 2025 — AI Agents Assembly</h1>
+  <p class="case-page-tag">// EV-charging assistant — winning entry, AI Agents track</p>
+
+  <div class="case-page-kpis kpis-3">
+    <div class="kpi"><span class="kpi-num warm">1st</span><span class="kpi-label">AI Agents track</span></div>
+    <div class="kpi"><span class="kpi-num">3</span><span class="kpi-label">capabilities · book · pay · monitor</span></div>
+    <div class="kpi"><span class="kpi-num">36h</span><span class="kpi-label">build window</span></div>
+  </div>
+
+  <div class="case-meta-grid">
+    <div>
+      <h3>Role</h3>
+      <p>Builder. Designed the agent's job-to-be-done, picked the surface (Telegram),
+        wrote the n8n orchestration, and handled the GPT prompt engineering. Pitched
+        and demoed live to the judging panel.</p>
+    </div>
+    <div>
+      <h3>Stack</h3>
+      <ul>
+        <li>n8n</li><li>Telegram Bot API</li><li>GPT</li><li>JavaScript</li><li>Webhooks</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="case-section-label">Context</p>
+    <h2>The brief: build an agent that does something useful in EV mobility</h2>
+    <p class="lede">
+      The HackAtion 2025 AI Agents track asked builders to ship something
+      that could replace a workflow a human currently has to slog through.
+      Most teams went straight to dashboards-with-an-agent-attached. I went
+      the other direction: no UI at all.
+    </p>
+    <p>
+      EV charging in India today is a coordination tax on the driver:
+      check an app for stations, check another for availability, drive
+      there, find it occupied, drive again. It's the kind of friction that
+      any human would rather hand to someone else if they could.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">Approach</p>
+    <h2>The agent should do the boring part</h2>
+    <p>
+      Three design calls, made early:
+    </p>
+    <ul>
+      <li><strong>Telegram over a custom UI.</strong> Zero install. The user is already there. The interaction is a chat, not a screen, which matches what an agent actually does.</li>
+      <li><strong>Three capabilities, not ten.</strong> Slot booking, payment handling, live availability. Pick the spine of the workflow, ship those, leave the rest. Hackathon scope discipline.</li>
+      <li><strong>n8n for orchestration, GPT for conversation.</strong> n8n handles the booking state machine, payment APIs, and availability polling. GPT is the front-of-house. Each tool does what it's good at.</li>
+    </ul>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">Architecture</p>
+    <h2>How the agent moves</h2>
+    <pre class="case-diagram">
+[ User on Telegram ]
+       <span class="arrow">↓</span>     "Find me a charger near Indiranagar at 7pm"
+[ Telegram Bot API ]
+       <span class="arrow">↓</span>     webhook
+[ n8n orchestration ]
+       <span class="arrow">├─▶</span> [ GPT ]            <span class="label">// intent + slot extraction</span>
+       <span class="arrow">├─▶</span> [ Availability API ] <span class="label">// live station status</span>
+       <span class="arrow">├─▶</span> [ Booking engine ]   <span class="label">// reserve slot</span>
+       <span class="arrow">└─▶</span> [ Payment gateway ]  <span class="label">// confirm + charge</span>
+       <span class="arrow">↓</span>
+[ User gets ] ── confirmed slot, location pin, payment receipt
+    </pre>
+    <p>
+      The interesting part: GPT only handles natural language, never makes the
+      booking decision. n8n holds state and gates every action. That separation
+      means the agent can't hallucinate a reservation — it can only describe
+      what n8n actually did.
+    </p>
+  </section>
+
+  <p class="case-pull">
+    Agents win when they handle the orchestration users would otherwise abandon.
+    No one's switching from "open three apps in sequence" to "open three apps,
+    plus a chat assistant." They're switching to "tell the bot what you need."
+  </p>
+
+  <section class="case-section">
+    <p class="case-section-label">Outcome</p>
+    <h2>Won the AI Agents track</h2>
+    <p>
+      The judges singled out the agent / orchestration / tool boundary — the
+      thing that made the system feel reliable rather than like another
+      hallucination demo. The Telegram-first surface was the second most-asked
+      question in the Q&amp;A: most teams had built a dashboard, and the demo
+      that didn't need one stood out.
+    </p>
+    <p>
+      Build window: about 36 hours, mostly solo. The work that mattered most
+      wasn't the code — it was deciding what NOT to build before the clock
+      started.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">What I'd do differently</p>
+    <h2>Add memory earlier</h2>
+    <p>
+      The hackathon entry was stateless per-session. To turn this into a real
+      product I'd give the agent persistent memory of a user's home and work
+      addresses, preferred station types (DC fast vs AC), and historical
+      availability patterns. Then "find me a charger" becomes "the agent
+      already knows" — which is the actual win.
+    </p>
+  </section>
+
+  <nav class="case-pager" aria-label="More case studies">
+    <a href="case-rayna.html" class="prev">
+      <span class="pager-key">← No. 02</span>
+      <span class="pager-title">Rayna Tours</span>
+    </a>
+    <a href="case-blive.html" class="next">
+      <span class="pager-key">Next · No. 04 →</span>
+      <span class="pager-title">BLive EZY</span>
+    </a>
+  </nav>
+</article>
+</main>
+
+<footer class="status-strip" role="contentinfo">
+  <span class="strip-cell strip-live">
+    <span class="dot dot-live" aria-hidden="true"></span>
+    <span>OPERATOR ONLINE</span>
+  </span>
+  <span class="strip-cell"><span class="strip-key">LOC</span> Bengaluru</span>
+  <span class="strip-cell"><span class="strip-key">UTC</span> +5:30</span>
+  <span class="strip-cell"><span class="strip-key">CLK</span> <span data-clock>—</span></span>
+  <span class="strip-cell strip-cell-flex"></span>
+  <span class="strip-cell strip-build">© 2026 · Akshith Kumar Y V</span>
+</footer>
+
+<script src="script.js?v=8" defer></script>
+</body>
+</html>

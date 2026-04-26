@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>Rayna Tours — Marketing &amp; Ops Automation — Akshith Kumar Y V</title>
+<meta name="description" content="Architected Rayna Tours' visa-processing automation (4,000 apps/day) and unified marketing data into BigQuery + Power BI for cross-channel ROAS reporting.">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,30&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css?v=8">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<a href="index.html#main" class="skip-link">Skip to content</a>
+
+<header class="topbar" role="banner">
+  <a href="index.html#top" class="brand" aria-label="Back to portfolio">
+    <span class="brand-mark" aria-hidden="true">A</span>
+    <span class="brand-mono">akshith.yv</span>
+  </a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="index.html#dossier"><span class="num">01</span> Work</a>
+    <a href="index.html#approach"><span class="num">02</span> Approach</a>
+    <a href="index.html#capabilities"><span class="num">03</span> Stack</a>
+    <a href="index.html#contact"><span class="num">04</span> Contact</a>
+  </nav>
+  <div class="topbar-actions">
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" aria-pressed="false">
+      <span class="theme-toggle-track" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<article class="case-page">
+  <a href="index.html#dossier" class="case-back">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11 7H3m0 0l4-4m-4 4l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+    Back to dossier
+  </a>
+
+  <div class="case-page-meta">
+    <span class="case-page-num">No. 02</span>
+    <span class="pill pill-live"><span class="dot dot-live" aria-hidden="true"></span>LIVE</span>
+    <span>2024 — Present</span>
+    <span>·</span>
+    <span>BENGALURU · DUBAI</span>
+  </div>
+
+  <h1 class="case-page-title">Rayna Tours</h1>
+  <p class="case-page-tag">// end-to-end marketing &amp; ops automation</p>
+
+  <div class="case-page-kpis">
+    <div class="kpi"><span class="kpi-num accent">4,000<span class="dim">/day</span></span><span class="kpi-label">visa applications capacity</span></div>
+    <div class="kpi"><span class="kpi-num">3</span><span class="kpi-label">ad sources unified</span></div>
+    <div class="kpi"><span class="kpi-num accent">~8h/wk</span><span class="kpi-label">reporting effort cut</span></div>
+    <div class="kpi"><span class="kpi-num">1</span><span class="kpi-label">source-of-truth shipped</span></div>
+  </div>
+
+  <div class="case-meta-grid">
+    <div>
+      <h3>Role</h3>
+      <p>Architect of the automation and the data integration. Wrote the data
+        contracts that unblocked cross-channel ROAS, ran the n8n workflow design,
+        and partnered with engineering on the Power BI delivery.</p>
+    </div>
+    <div>
+      <h3>Stack</h3>
+      <ul>
+        <li>BigQuery</li><li>n8n</li><li>Power BI</li><li>Google Tag Manager</li><li>Google Ads API</li><li>Meta Ads API</li><li>SQL</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="case-section-label">Context</p>
+    <h2>Two problems wearing the same coat</h2>
+    <p class="lede">
+      A growing tours operator with two pain points that looked separate but
+      shared a root cause: visa processing was bottlenecked by humans who'd already
+      become a process, and marketing decisions were being made on numbers no one
+      could fully trust.
+    </p>
+    <p>
+      The visa team was hand-stitching applications across channels. The growth
+      team had three ad platforms, four spreadsheets, and a working theory of
+      ROAS. Both problems had the same shape: data trapped in places it couldn't
+      flow out of, and decisions waiting on humans to copy-paste.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">Approach</p>
+    <h2>Make the data contract the deliverable</h2>
+    <p>
+      I treated the marketing-data work and the visa-ops work as one system with
+      two surfaces. The first artefact wasn't a dashboard — it was a data
+      contract spec defining: every event we'd capture, what dimensions it
+      carried, where it landed in BigQuery, and which downstream consumer relied
+      on it. Once that document existed, parallel build streams stopped
+      colliding.
+    </p>
+    <ul>
+      <li><strong>Visa automation:</strong> n8n orchestrates intake → document validation → status updates → applicant comms. Capacity scales to up to 4,000 applications a day without touching the headcount.</li>
+      <li><strong>Marketing data unification:</strong> Google Ads + Meta Ads + GTM events all ingest into BigQuery on a shared schema. Every conversion has a source-of-truth row.</li>
+      <li><strong>Power BI delivery:</strong> ROAS, CAC, channel-mix, funnel stage — all live, all reconcilable to source. No more "which number is right" stand-up debates.</li>
+      <li><strong>A/B testing pipeline:</strong> hypotheses defined upfront, GTM events instrumented with engineering, results reported for go/no-go decisions.</li>
+    </ul>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">Architecture</p>
+    <h2>The data flow</h2>
+    <pre class="case-diagram">
+[ Google Ads ]    [ Meta Ads ]    [ GTM events ]
+       <span class="arrow">↘</span>            <span class="arrow">↓</span               <span class="arrow">↙</span>
+            [ BigQuery (source-of-truth) ]
+                       <span class="arrow">↓</span>
+            <span class="label">// data contract: shared schema, one ROAS</span>
+                       <span class="arrow">↓</span>
+              [ Power BI dashboards ]
+
+[ Visa applicant ] ──▶ [ n8n intake ]
+                            <span class="arrow">↓</span>
+                       [ doc validation ]
+                            <span class="arrow">↓</span>
+                       [ status engine ]  ──▶ [ applicant comms ]
+                            <span class="arrow">↓</span>
+                       [ BigQuery audit ]
+    </pre>
+    <p>
+      The shared design choice across both halves: BigQuery as the source-of-truth.
+      Marketing rolls up to it for reporting; visa operations roll up to it for
+      audit and capacity planning. One system to instrument, one place to query,
+      one set of conventions to learn.
+    </p>
+  </section>
+
+  <p class="case-pull">
+    The contract is the asset, not the dashboard. Once Google + Meta + GTM
+    spoke the same schema, the dashboard was a few hours of work — the months
+    of value lived in everything you stop arguing about.
+  </p>
+
+  <section class="case-section">
+    <p class="case-section-label">Outcome</p>
+    <h2>Capacity unlocked, time recovered, decisions sharper</h2>
+    <p>
+      Visa processing scaled to support up to 4,000 applications a day with no
+      proportional headcount increase. Marketing reporting that previously consumed
+      ~8 hours a week of manual reconciliation now runs continuously. The growth
+      team makes channel-allocation decisions on numbers that match across systems,
+      which is the boring foundation under every "data-driven" claim.
+    </p>
+    <p>
+      The work is ongoing. New ad surfaces (TikTok, search alternatives) plug into
+      the same schema as they're added. The visa workflow keeps absorbing edge
+      cases without rewrites because the contract was designed to be additive.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">What I'd do differently</p>
+    <h2>Start with attribution decisions, not attribution data</h2>
+    <p>
+      The data was the easy part. The harder part — and the one I'd timebox
+      sooner next time — was getting stakeholder agreement on attribution
+      windows, channel-credit splits, and how to reconcile Meta's view of a
+      conversion with Google's. Doing the data work first and the policy work
+      second means a moment, late in the project, where everyone realises the
+      numbers are correct but no one likes the answer.
+    </p>
+  </section>
+
+  <nav class="case-pager" aria-label="More case studies">
+    <a href="case-stackd.html" class="prev">
+      <span class="pager-key">← No. 01</span>
+      <span class="pager-title">StackD Smart Vending</span>
+    </a>
+    <a href="case-hackation.html" class="next">
+      <span class="pager-key">Next · No. 03 →</span>
+      <span class="pager-title">HackAtion 2025</span>
+    </a>
+  </nav>
+</article>
+</main>
+
+<footer class="status-strip" role="contentinfo">
+  <span class="strip-cell strip-live">
+    <span class="dot dot-live" aria-hidden="true"></span>
+    <span>OPERATOR ONLINE</span>
+  </span>
+  <span class="strip-cell"><span class="strip-key">LOC</span> Bengaluru</span>
+  <span class="strip-cell"><span class="strip-key">UTC</span> +5:30</span>
+  <span class="strip-cell"><span class="strip-key">CLK</span> <span data-clock>—</span></span>
+  <span class="strip-cell strip-cell-flex"></span>
+  <span class="strip-cell strip-build">© 2026 · Akshith Kumar Y V</span>
+</footer>
+
+<script src="script.js?v=8" defer></script>
+</body>
+</html>
