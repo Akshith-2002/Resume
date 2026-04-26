@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>StackD Smart Vending — Akshith Kumar Y V</title>
+<meta name="description" content="Led a 9-person cross-functional team on StackD, an AI + IoT vending platform with predictive restocking. Reduced stockouts by ~30%.">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,30&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css?v=8">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<a href="index.html#main" class="skip-link">Skip to content</a>
+
+<header class="topbar" role="banner">
+  <a href="index.html#top" class="brand" aria-label="Back to portfolio">
+    <span class="brand-mark" aria-hidden="true">A</span>
+    <span class="brand-mono">akshith.yv</span>
+  </a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="index.html#dossier"><span class="num">01</span> Work</a>
+    <a href="index.html#approach"><span class="num">02</span> Approach</a>
+    <a href="index.html#capabilities"><span class="num">03</span> Stack</a>
+    <a href="index.html#contact"><span class="num">04</span> Contact</a>
+  </nav>
+  <div class="topbar-actions">
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" aria-pressed="false">
+      <span class="theme-toggle-track" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<article class="case-page">
+  <a href="index.html#dossier" class="case-back">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11 7H3m0 0l4-4m-4 4l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+    Back to dossier
+  </a>
+
+  <div class="case-page-meta">
+    <span class="case-page-num">No. 01</span>
+    <span class="pill pill-live"><span class="dot dot-live" aria-hidden="true"></span>LIVE</span>
+    <span>2024 — 2025</span>
+    <span>·</span>
+    <span>BENGALURU</span>
+  </div>
+
+  <h1 class="case-page-title">StackD Smart Vending</h1>
+  <p class="case-page-tag">// AI + IoT operations platform · led 9-person cross-functional team</p>
+
+  <div class="case-page-kpis kpis-3">
+    <div class="kpi"><span class="kpi-num accent">9</span><span class="kpi-label">person team led</span></div>
+    <div class="kpi"><span class="kpi-num accent">~30%</span><span class="kpi-label">stock-outs reduced</span></div>
+    <div class="kpi"><span class="kpi-num">3</span><span class="kpi-label">layers · HW · BE · BI</span></div>
+  </div>
+
+  <div class="case-meta-grid">
+    <div>
+      <h3>Role</h3>
+      <p>Business Analyst &amp; Project Manager. Owned discovery, requirements, technical specs, sprint delivery, UAT, and launch. Acted as the client-facing PM and the bridge between hardware, backend, and BI engineers.</p>
+    </div>
+    <div>
+      <h3>Stack</h3>
+      <ul>
+        <li>Python (AI)</li><li>n8n</li><li>Tableau</li><li>IoT sensors</li><li>JIRA</li><li>SQL</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="case-section-label">Context</p>
+    <h2>Vending economics fail quietly. We made the failure loud.</h2>
+    <p class="lede">
+      Smart-vending operators lose money in two places at once: empty machines that
+      can't sell, and full machines no one's buying from. Both look identical from
+      a back-office spreadsheet — until you've walked the route.
+    </p>
+    <p>
+      The brief from the client was deceptively simple: build a platform that tells
+      operators what to restock, where, and when. The hard part was that the answer
+      lives across three data planes that don't talk to each other — IoT sensors on
+      the machine, transaction data in the backend, and field-ops decisions made
+      from gut feel.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">Approach</p>
+    <h2>Spec the boundary, not the feature</h2>
+    <p>
+      My first artefact wasn't a wireframe or a sprint plan. It was a one-page
+      data contract: for every event the machine emits, what does it mean, who owns
+      it, and which downstream system depends on it? That contract became the
+      acceptance criteria for hardware, the schema for the backend, and the
+      dimensions the BI layer would aggregate against.
+    </p>
+    <ul>
+      <li><strong>Discovery:</strong> field-walked four routes with operators. Watched the actual restock decision get made. The spec changed.</li>
+      <li><strong>BRDs &amp; FRDs:</strong> three documents — one per data plane (IoT, backend, BI) — with explicit handoff specs between them.</li>
+      <li><strong>Sprint cadence:</strong> two-week sprints in JIRA. Hardware shipped first because everything else was downstream of clean signal.</li>
+      <li><strong>UAT:</strong> staged on a single high-traffic machine before any rollout decisions were made.</li>
+    </ul>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">Architecture</p>
+    <h2>The data flow we shipped</h2>
+    <pre class="case-diagram">
+[ IoT sensors ]
+      <span class="arrow">↓</span>     telemetry · weight · door-events · vends
+[ Backend ingestion ]
+      <span class="arrow">↓</span>     <span class="label">Python AI: predictive restock model</span>
+[ Decision engine ] ── n8n workflow ──▶ [ Field ops alerts ]
+      <span class="arrow">↓</span>
+[ Tableau BI layer ]   <span class="label">// remote monitoring + anomaly detection</span>
+    </pre>
+    <p>
+      Predictive over threshold. The naive version of restock alerts is a level
+      threshold ("alert when stock &lt; 30%"). That's right twice a day and wrong
+      the rest of the time. The Python model predicts depletion based on
+      machine-specific velocity, day-of-week, and weather signal — so the alert
+      fires when a route operator can still get there before the machine empties,
+      not after.
+    </p>
+  </section>
+
+  <p class="case-pull">
+    Anomaly detection earned its place the day a machine reported normal vends
+    while its actual stock was unchanged. The model flagged it before the
+    operators did. Revenue saved that month paid for a quarter of the build.
+  </p>
+
+  <section class="case-section">
+    <p class="case-section-label">Outcome</p>
+    <h2>~30% fewer stock-outs. The number that matters.</h2>
+    <p>
+      Across the rollout cohort, stock-out incidents dropped roughly 30% in the
+      first quarter post-launch. That's the metric the client signed for. The
+      ones we didn't put in the SOW: anomaly-detection caught two hardware
+      malfunctions that would otherwise have been invisible for weeks, and the
+      Tableau dashboard cut the operator's weekly review from a half-day to about
+      twenty minutes.
+    </p>
+    <p>
+      The 9-person team — engineering, design, data, ops — ran to the cadence I
+      set in JIRA from sprint one through launch. No fire drills. No "where are
+      we" Slack threads on Sunday. That's the part of PM work that doesn't fit
+      on a slide but is the actual job.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">What I'd do differently</p>
+    <h2>Ship the BI layer earlier</h2>
+    <p>
+      We sequenced hardware → backend → BI. It's the right dependency order, but
+      it meant operators didn't get a dashboard until late in the build. If I ran
+      this again I'd ship a stub Tableau view in week three using mocked data, so
+      stakeholders had something to react to before the real signal flowed in.
+      Earlier reactions = earlier course corrections.
+    </p>
+  </section>
+
+  <nav class="case-pager" aria-label="More case studies">
+    <a href="index.html#dossier" class="prev">
+      <span class="pager-key">← All cases</span>
+      <span class="pager-title">Back to dossier</span>
+    </a>
+    <a href="case-rayna.html" class="next">
+      <span class="pager-key">Next · No. 02 →</span>
+      <span class="pager-title">Rayna Tours</span>
+    </a>
+  </nav>
+</article>
+</main>
+
+<footer class="status-strip" role="contentinfo">
+  <span class="strip-cell strip-live">
+    <span class="dot dot-live" aria-hidden="true"></span>
+    <span>OPERATOR ONLINE</span>
+  </span>
+  <span class="strip-cell"><span class="strip-key">LOC</span> Bengaluru</span>
+  <span class="strip-cell"><span class="strip-key">UTC</span> +5:30</span>
+  <span class="strip-cell"><span class="strip-key">CLK</span> <span data-clock>—</span></span>
+  <span class="strip-cell strip-cell-flex"></span>
+  <span class="strip-cell strip-build">© 2026 · Akshith Kumar Y V</span>
+</footer>
+
+<script src="script.js?v=8" defer></script>
+</body>
+</html>

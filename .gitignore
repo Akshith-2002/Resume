@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor / OS junk
+*.swp
+.idea/
+.vscode/
+
+# gstack runtime
+.gstack/
+
+# Node (if anyone ever adds tooling later)
+node_modules/
+
+# Local linkedin export (private)
+linkedin_export/
