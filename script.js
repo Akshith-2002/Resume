@@ -1,4 +1,4 @@
-// Akshith Kumar Y V — Operator's Console
+// Akshith Kumar Y V — "Build Log"
 // Behavior layer. No deps. Hand-tuned.
 
 (() => {
@@ -135,11 +135,13 @@
   })();
 
   const COMMANDS = [
-    { icon: '01', label: 'Projects', meta: 'NAV', run: () => location.href = HOME + '#dossier' },
-    { icon: '02', label: 'How I Work', meta: 'NAV', run: () => location.href = HOME + '#approach' },
-    { icon: '03', label: 'Skills & Tools', meta: 'NAV', run: () => location.href = HOME + '#capabilities' },
-    { icon: '04', label: 'Experience', meta: 'NAV', run: () => location.href = HOME + '#experience' },
-    { icon: '05', label: 'Contact', meta: 'NAV', run: () => location.href = HOME + '#contact' },
+    { icon: '01', label: 'Services', meta: 'NAV', run: () => location.href = HOME + '#services' },
+    { icon: '02', label: 'Selected Work', meta: 'NAV', run: () => location.href = HOME + '#dossier' },
+    { icon: '2b', label: 'More Automations', meta: 'NAV', run: () => location.href = HOME + '#automations' },
+    { icon: '03', label: 'Process', meta: 'NAV', run: () => location.href = HOME + '#approach' },
+    { icon: '04', label: 'Stack & Tools', meta: 'NAV', run: () => location.href = HOME + '#capabilities' },
+    { icon: '05', label: 'Experience', meta: 'NAV', run: () => location.href = HOME + '#experience' },
+    { icon: '06', label: 'Contact', meta: 'NAV', run: () => location.href = HOME + '#contact' },
     { icon: '↑', label: 'Back to top', meta: 'NAV', run: () => location.href = HOME + '#top' },
     { icon: '↗', label: 'Open Resume — printable PDF', meta: 'PAGE', run: () => location.href = 'cv.html' },
     { icon: '①', label: 'Project · StackD Smart Vending', meta: 'PROJECT', run: () => location.href = 'case-stackd.html' },
@@ -250,9 +252,9 @@
       Object.assign(toastEl.style, {
         position: 'fixed', bottom: '64px', left: '50%',
         transform: 'translateX(-50%) translateY(20px)',
-        background: 'var(--surface-2)', color: 'var(--text)',
-        border: '1px solid var(--rule-strong)',
-        padding: '10px 16px', borderRadius: '8px',
+        background: 'var(--panel-2)', color: 'var(--ink)',
+        border: '2px solid var(--edge)',
+        padding: '10px 16px', borderRadius: '0',
         fontFamily: 'var(--ff-mono)', fontSize: '13px',
         opacity: '0', transition: 'opacity .25s var(--ease-out), transform .25s var(--ease-out)',
         zIndex: '100', pointerEvents: 'none', maxWidth: '90vw',

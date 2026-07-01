@@ -1,97 +1,57 @@
 # Design System — Akshith Kumar Y V Portfolio
 
 ## Product Context
-- **What this is:** Personal portfolio for a Technical Business Analyst & Project Manager who ships AI/automation systems.
-- **Who it's for:** Hiring managers at AI-forward product companies, founders looking for a BA/PM who can vibe-code, and recruiters scanning for BA + AI fluency.
-- **Positioning:** Strategist who codes. Operator who ships. Bridge between business, engineering, and AI.
+- **What this is:** Freelance portfolio for an AI & automation consultant (Technical BA / PM background) who builds AI agents, n8n workflows, data pipelines, and the specs behind them.
+- **Who it's for:** Founders and teams who need a process automated or an AI agent built right; recruiters/clients scanning for BA + AI fluency.
+- **Positioning:** "I write the spec and I ship the system." Freelance AI/automation consultant, available for engagements.
 
 ## Aesthetic Direction
-- **Direction:** Operator's Console — Editorial × Mission Control
-- **Decoration level:** Intentional (serif display does emotional work, monospace meta does the operator signaling, no decorative noise)
-- **Mood:** Always-on. Confident. Reads like a serious operator's status page, not a marketing site.
+- **Direction:** "Build Log" — Neo-brutalist × Terminal.
+- **Mood:** Engineer-built, opinionated, high-contrast. Reads like an operator's terminal, not a marketing page.
+- **Decoration level:** Structural. Borders, hard offset shadows, and mono labels do the work — no gradients, no decorative noise, no soft blur.
 - **Risks taken (deliberate):**
-  1. Dark-first (most BA portfolios go light/safe). Owns the always-shipping operator vibe.
-  2. Editorial serif paired with mono — not a typical pairing. Sells the strategist + builder duality.
-  3. Project cards as ops monitor cards (live status pill, KPI metric, stack labels), not generic case-study tiles.
+  1. Uppercase Space Grotesk display + heavy mono structure. Bold, memorable, not the usual portfolio serif.
+  2. Hard 2px borders with solid offset shadows (`6px 6px 0`) that shift on hover — the brutalist signature.
+  3. Lime signal accent on near-black; deep green on paper for the light toggle.
 
 ## Typography
-- **Display/Hero:** Fraunces Variable (Google Fonts) — `wght 400-700`, `opsz 9-144`. Optical-size axis lets the giant hero feel different from inline serif accents.
-- **Body:** Geist Sans (Google Fonts) — 400, 500, 600. Tight letterforms, modern but not trendy.
-- **Data/UI/Meta:** Geist Mono (Google Fonts) — 400, 500. For labels, KPIs, status pills, footer strip.
-- **Loading strategy:** `preconnect` + `display=swap` from fonts.googleapis.com. Self-host can come later.
-- **Scale (perfect fourth, 1.333):**
-  - `--fs-display-1`: clamp(3.5rem, 8vw + 1rem, 8rem) — hero headline
-  - `--fs-display-2`: clamp(2.25rem, 4vw + 1rem, 4rem) — section opener
-  - `--fs-h1`: 2rem
-  - `--fs-h2`: 1.5rem
-  - `--fs-h3`: 1.125rem
-  - `--fs-body`: 1rem (16px)
-  - `--fs-meta`: 0.8125rem (13px) — monospace
-  - `--fs-micro`: 0.6875rem (11px) — uppercase tracked
+- **Display:** Space Grotesk (Google Fonts) `400/500/700` — uppercase, tight tracking, used for hero, section titles, card titles.
+- **Body:** Geist Sans `400/500/600`.
+- **Data/UI/Meta:** Geist Mono `400/500` — labels, KPIs, nav, pills, status strip, command palette.
+- **Loading:** `preconnect` + `display=swap` from Google Fonts.
+- **Fluid scale:** `--fs-hero` clamp(2.75rem→7.5rem), `--fs-d1`, `--fs-d2`, plus fixed body/meta/micro. See `:root` in styles.css.
 
 ## Color
-- **Approach:** Restrained. One signal accent (lime), one rare warm accent (amber) for hover/highlight only.
-- **Dark (default):**
-  - `--bg`: `#0A0A0B` — near-black with slight warmth
-  - `--surface`: `#15151A` — card lift
-  - `--surface-2`: `#1C1C22` — elevated card
-  - `--rule`: `#2A2A33` — hairlines
-  - `--rule-strong`: `#3D3D48` — visible borders
-  - `--text`: `#ECECEC` — primary
-  - `--text-muted`: `#8A8A95` — meta, labels
-  - `--text-dim`: `#5A5A63` — tertiary
-  - `--accent`: `#C8FF4D` — signal lime (live dots, KPIs, hover states)
-  - `--accent-warm`: `#FF8A4C` — rare second accent
-  - `--success`: `#5DD39E`
-  - `--warn`: `#FFB347`
-- **Light variant (toggle):**
-  - `--bg`: `#FAF8F3` — warm paper
-  - `--surface`: `#F2EFE8`
-  - `--text`: `#0E0E12`
-  - `--accent`: `#1F4A1F` — deep green replaces lime in light mode (lime is illegible on cream)
-- **Contrast:** All text/bg pairings ≥ AA (4.5:1) and most ≥ AAA (7:1). Accent on bg is decorative-only when used for borders/dots.
+- **Approach:** One signal accent (lime), one rare warm accent (amber). High-contrast borders via `--edge`.
+- **Dark (default):** `--bg #0A0A0A`, `--panel #141416`, `--ink #F4F4EF`, `--ink-dim #9C9C95`, `--line #262628`, `--line-strong #37373A`, `--edge #F4F4EF`, `--accent #C8FF4D` (lime), `--warm #FF8A4C`.
+- **Light (toggle, warm paper):** `--bg #F3F1E9`, `--panel #FBFAF5`, `--ink #0C0C0D`, `--edge #0C0C0D`, `--accent #1F5C1F` (deep green — lime is illegible on cream), `--warm #B4531A`.
+- **Contrast:** Text/bg pairings meet AA+. Accent used decoratively for borders/dots and as button fill (with `--accent-ink` for legible text on lime/green).
 
-## Spacing
-- **Base unit:** 4px
-- **Density:** Comfortable (ops dashboards are dense, but a portfolio needs breathing room)
-- **Scale:** `--sp-1`(4) `--sp-2`(8) `--sp-3`(12) `--sp-4`(16) `--sp-5`(24) `--sp-6`(32) `--sp-7`(48) `--sp-8`(64) `--sp-9`(96) `--sp-10`(128)
-
-## Layout
-- **Approach:** Hybrid — strict 12-col grid for app sections (projects, skills), creative-editorial for hero and section openers.
-- **Max content width:** 1280px
-- **Gutter:** 24px → 32px on ≥1024px
-- **Border radius scale:** sm 4px / md 8px / lg 12px / xl 16px. Cards use 12px. Pills use 9999px (full).
-- **Hairlines:** 1px `--rule` on internal dividers, 1px `--rule-strong` on card borders.
+## Spacing & Layout
+- **Base:** 4px. Scale `--sp-1`…`--sp-10` (4→128).
+- **Max width:** 1240px. Gutter `clamp(16px, 4vw, 40px)`.
+- **Geometry:** No border radius (brutalist). Structural border weight `--bw: 2px`. Hard offset shadows, never blurred.
+- **Background:** Faint 64px grid with a top-down vignette (`body::before`) so it fades at the edges.
 
 ## Motion
-- **Approach:** Intentional. Hero load choreography (serif optical-size morph), KPI count-ups on scroll, cursor-tracked grid lines on hero.
-- **Easing:** `--ease-out`: cubic-bezier(0.16, 1, 0.3, 1) / `--ease-in-out`: cubic-bezier(0.65, 0, 0.35, 1)
-- **Duration:** micro 80ms / short 200ms / medium 400ms / long 700ms
-- **Reduced motion:** All animations honor `@media (prefers-reduced-motion: reduce)` — they cut to instant or fade only.
+- **Approach:** Intentional. Hero line reveal (translate + blur → sharp), blinking terminal cursor, cursor-tracked lime hero grid (radial mask), KPI count-ups on scroll, card hover = translate + hard shadow.
+- **Easing:** `--ease` cubic-bezier(0.16,1,0.3,1). Durations 90/200/420/720ms.
+- **Reduced motion:** All animations honor `prefers-reduced-motion` — reveals show instantly, cursor/dot animations off.
 
-## Components
-
-### Status pill
-Inline-flex, 9999px radius, mono micro-text, optional pulsing dot. Variants: LIVE (lime), SHIPPED (muted), WON (warm).
-
-### Project card
-- Border 1px `--rule-strong`, radius 12px, padding 32px
-- Top row: status pill + year range
-- Title: serif display
-- KPI: oversized mono number with label
-- Stack labels: mono micro pills
-- Outcome line: body
-- Hairline accent line on hover
-
-### Skill matrix
-Real grid: category column (mono caps) → skill chips. No bubbles. Dense.
-
-### Footer status strip
-Always-pinned bottom strip: `LIVE` dot + current location + UTC offset + availability + clock.
+## Key Components
+- **Button:** solid block, 2px `--edge` border, `6px 6px 0` shadow; hover translates `-3px,-3px` and grows the shadow; active presses in.
+- **Pill / tag:** bordered rectangle, mono micro-caps. Variants LIVE (lime), WON/OPEN (amber), SHIPPED (muted).
+- **Service card:** 2×2 bordered grid, `S/0x` mono index, uppercase title, tag row.
+- **Case card:** bordered panel, status pill + year, uppercase display title, KPI row (mono), stack tags; hover lifts with a lime hard shadow.
+- **Worklog:** compact 3-col bordered grid for the "More Automations Shipped" set (no fabricated KPIs).
+- **Cap table / CV / case pages:** all share the bordered-panel + mono-label system.
+- **Command palette:** ⌘K / `/`, bordered modal, lime prompt, keyboard nav.
+- **Status strip:** pinned bottom bar — AVAILABLE FOR FREELANCE + location + UTC + live IST clock.
 
 ## Decisions Log
 | Date | Decision | Rationale |
 |------|----------|-----------|
-| 2026-04-26 | Initial design system created | Operator's Console direction confirmed by Akshith. Editorial serif + monospace + dark surfaces; project cards as ops monitor cards. |
-| 2026-04-26 | Fraunces + Geist + Geist Mono | Free on Google Fonts, modern, distinct. Avoids Inter/Roboto/Poppins (overused). |
-| 2026-04-26 | Lime accent (#C8FF4D) | Signals "live system." Avoids purple gradient AI-slop. Pairs with warm amber for rare secondary highlight. |
+| 2026-04-26 | Initial "Operator's Console" system (dark editorial serif + mono). | First build. |
+| 2026-07-01 | Redesigned to "Build Log" neo-brutalist terminal; reframed as freelance AI/automation consultant. | Client wanted a proper freelancer portfolio and a distinctive new design. Added Services section + worklog of shipped automations. |
+| 2026-07-01 | Space Grotesk display replaces Fraunces; kept Geist + Geist Mono. | Grotesk uppercase suits the brutalist/terminal POV; serif read too editorial. |
+| 2026-07-01 | Hard borders + offset shadows, zero radius, lime-on-black / green-on-paper. | Commit to the brutalist POV; avoid template smell and AI-slop gradients. |

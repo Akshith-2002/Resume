@@ -7,18 +7,25 @@ A static, no-build portfolio site. Hand-tuned, zero dependencies, deploy-ready.
 ## Files
 
 ```
-index.html              — main portfolio (hero, dossier, experience, contact)
-case-stackd.html        — No. 01 · StackD Smart Vending
-case-rayna.html         — No. 02 · Rayna Tours marketing/ops automation
-case-hackation.html     — No. 03 · HackAtion 2025 (AI Agents winner)
-case-blive.html         — No. 04 · BLive EZY EV fleet
-case-opencredits.html   — No. 05 · Open Credits AI-assisted EdTech
+index.html              — freelance portfolio (hero, services, work, worklog, process, stack, contact)
+case-hackation.html     — HackAtion 2025 (AI Agents winner)
+case-rayna.html         — Rayna Tours marketing/ops automation
+case-stackd.html        — StackD Smart Vending (AI + IoT)
+case-blive.html         — BLive EZY EV fleet
+case-opencredits.html   — Open Credits AI-assisted EdTech
 cv.html                 — printable resume (Cmd+P → save PDF)
-styles.css              — design system + components
+styles.css              — "Build Log" design system + components
 script.js               — clock, theme, count-ups, command palette
-favicon.svg             — operator mark
+favicon.svg             — mark
 DESIGN.md               — design system source of truth
 ```
+
+## Design
+
+Neo-brutalist "Build Log" terminal aesthetic: Space Grotesk display + Geist / Geist
+Mono, hard 2px borders with solid offset shadows, lime signal accent on near-black
+(deep green on the paper-toned light toggle). Framed as a freelance AI &
+automation consultant. See [DESIGN.md](DESIGN.md).
 
 ## Run locally
 
