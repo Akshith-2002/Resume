@@ -317,50 +317,112 @@
   <div class="worklog">
     <article class="worklog-item">
       <header><span class="pill pill-live"><span class="dot dot-live" aria-hidden="true"></span>LIVE</span></header>
-      <h3>Social Media Automation</h3>
-      <p>Content pipeline that drafts, schedules, and publishes across channels — GPT for copy,
-        n8n for scheduling and cross-posting, so the calendar runs itself.</p>
-      <ul class="case-stack"><li>n8n</li><li>GPT</li><li>Meta API</li></ul>
-    </article>
-
-    <article class="worklog-item">
-      <header><span class="pill pill-live"><span class="dot dot-live" aria-hidden="true"></span>LIVE</span></header>
-      <h3>AI Reels Engine</h3>
-      <p>Automated short-form video production — script, voiceover, and cut assembled by an
-        AI pipeline, then queued for review and publish. Turns a brief into a reel.</p>
-      <ul class="case-stack"><li>GPT</li><li>n8n</li><li>Media APIs</li></ul>
-    </article>
-
-    <article class="worklog-item">
-      <header><span class="pill pill-live"><span class="dot dot-live" aria-hidden="true"></span>LIVE</span></header>
-      <h3>Campaign Drive Automation</h3>
-      <p>Marketing campaign orchestration end-to-end: lead capture, event tracking, and
-        source attribution flowing from ads into a unified reporting layer.</p>
-      <ul class="case-stack"><li>GTM</li><li>Meta Ads</li><li>n8n</li><li>BigQuery</li></ul>
-    </article>
-
-    <article class="worklog-item">
-      <header><span class="pill pill-shipped">SHIPPED</span></header>
       <h3>Visa Application Automation</h3>
-      <p>Document intake → validation → submission, automated at scale. The engine behind the
-        up-to-4,000-applications-a-day throughput on the Rayna Tours pipeline.</p>
-      <ul class="case-stack"><li>n8n</li><li>SQL</li><li>API integration</li></ul>
+      <p>Python + Playwright agent that logs in, fills the multi-tab application, and uploads
+        documents on government visa portals. Claude vision solves the CAPTCHAs and OCRs
+        passports into a database. Built for 50+ countries, live on Oman.</p>
+      <ul class="case-stack"><li>Python</li><li>Playwright</li><li>Claude Vision</li><li>Postgres</li></ul>
+    </article>
+
+    <article class="worklog-item">
+      <header><span class="pill pill-live"><span class="dot dot-live" aria-hidden="true"></span>LIVE</span></header>
+      <h3>ISL Sign-Language Recognition</h3>
+      <p>Real-time Indian Sign Language recognition — webcam to recognized word as on-screen
+        text and spoken audio. MediaPipe Holistic landmarks feed an LSTM classifier, trained
+        on the INCLUDE dataset via a FastAPI backend.</p>
+      <ul class="case-stack"><li>Python</li><li>TensorFlow</li><li>MediaPipe</li><li>FastAPI</li></ul>
+    </article>
+
+    <article class="worklog-item">
+      <header><span class="pill pill-live"><span class="dot dot-live" aria-hidden="true"></span>LIVE</span></header>
+      <h3>AI Reels &amp; Content Studio</h3>
+      <p>Turns the Rayna product catalog into Bold Editorial Instagram carousels and AI reels.
+        An in-studio enhancer runs Claude vision + Nano Banana Pro for faithful 4K image
+        upgrades before publish.</p>
+      <ul class="case-stack"><li>Node</li><li>Claude Vision</li><li>Fal AI</li><li>Canvas</li></ul>
+    </article>
+
+    <article class="worklog-item">
+      <header><span class="pill pill-live"><span class="dot dot-live" aria-hidden="true"></span>LIVE</span></header>
+      <h3>Marketing &amp; Journey Automation</h3>
+      <p>Lifecycle engine: customer segments, multi-step journeys, and UTM → GTM → booking
+        signals that auto-detect conversions and move each customer to the right journey.
+        29 templates and 13 campaigns wired.</p>
+      <ul class="case-stack"><li>Node</li><li>BigQuery</li><li>GTM</li><li>SQL</li></ul>
+    </article>
+
+    <article class="worklog-item">
+      <header><span class="pill pill-live"><span class="dot dot-live" aria-hidden="true"></span>LIVE</span></header>
+      <h3>Social Media Automation</h3>
+      <p>Full-stack social media manager — frontend + API to schedule, queue, and publish
+        Rayna content across channels from a single console.</p>
+      <ul class="case-stack"><li>React</li><li>Node</li><li>REST API</li></ul>
     </article>
 
     <article class="worklog-item">
       <header><span class="pill pill-shipped">SHIPPED</span></header>
-      <h3>Sign-Language Product</h3>
-      <p>Accessibility-first product exploring AI-assisted sign-language recognition and
-        translation — owned the requirements and delivery as BA/PM.</p>
-      <ul class="case-stack"><li>AI / ML</li><li>Product</li><li>BA / PM</li></ul>
+      <h3>Bike Rental Booking Platform</h3>
+      <p>End-to-end MERN booking site for a two-wheeler rental business — phone-OTP login,
+        live availability, bookings, and an admin ops portal. Pay-at-pickup, flat-rate
+        pricing.</p>
+      <ul class="case-stack"><li>React</li><li>Node</li><li>Express</li><li>MongoDB</li></ul>
     </article>
 
     <article class="worklog-item">
       <header><span class="pill pill-shipped">SHIPPED</span></header>
-      <h3>Rental Service Product</h3>
-      <p>Booking and operations platform for a rental service — flows, requirements, and
-        reporting specs defined, delivered from discovery through launch.</p>
-      <ul class="case-stack"><li>Product</li><li>SQL</li><li>JIRA</li></ul>
+      <h3>Antino Pitch Deck Maker</h3>
+      <p>Generates co-branded client pitch decks from a chat or voice brief — HTML preview
+        plus one-click .pptx export. Tuned to read premium and human-written, not
+        AI-boilerplate.</p>
+      <ul class="case-stack"><li>Node</li><li>Claude API</li><li>PptxGenJS</li></ul>
+    </article>
+
+    <article class="worklog-item">
+      <header><span class="pill pill-shipped">SHIPPED</span></header>
+      <h3>Product Data Enrichment Engine</h3>
+      <p>Built the master product database behind the content tooling — ~1,470 products across
+        139 cities and 63 countries, fetched, enriched, and SEO-structured.</p>
+      <ul class="case-stack"><li>Python</li><li>SQLite</li><li>Meta API</li></ul>
+    </article>
+
+    <article class="worklog-item">
+      <header><span class="pill pill-shipped">SHIPPED</span></header>
+      <h3>Giveaway Campaign Platform</h3>
+      <p>Campaign web app — frontend, API, and auth — to run Rayna giveaway drives and
+        capture and qualify leads.</p>
+      <ul class="case-stack"><li>React</li><li>Node</li><li>JWT</li></ul>
+    </article>
+
+    <article class="worklog-item">
+      <header><span class="pill pill-shipped">SHIPPED</span></header>
+      <h3>Xcool Meta-Leads Automation</h3>
+      <p>Client build: Meta lead-ad pipeline — new leads flow from Meta Ads into an automated
+        n8n workflow for routing and follow-up, no manual sheet wrangling.</p>
+      <ul class="case-stack"><li>n8n</li><li>Meta Ads API</li><li>Webhooks</li></ul>
+    </article>
+
+    <article class="worklog-item">
+      <header><span class="pill pill-live"><span class="dot dot-live" aria-hidden="true"></span>BUILDING</span></header>
+      <h3>Job Radar</h3>
+      <p>A job-scraping tool I'm shaping into a paid SaaS — aggregates postings, filters by
+        fit, and surfaces the roles actually worth applying to.</p>
+      <ul class="case-stack"><li>Python</li><li>Scraping</li><li>SaaS</li></ul>
+    </article>
+
+    <article class="worklog-item">
+      <header><span class="pill pill-shipped">SHIPPED</span></header>
+      <h3>AI Interview Assistant</h3>
+      <p>Real-time meeting and interview assistant — listens, transcribes, and surfaces
+        suggested answers live during a call.</p>
+      <ul class="case-stack"><li>Python</li><li>Speech-to-text</li><li>GPT</li></ul>
+    </article>
+
+    <article class="worklog-item">
+      <header><span class="pill pill-shipped">SHIPPED</span></header>
+      <h3>WeddingKart Vendor Pipeline</h3>
+      <p>Data pipeline that scrapes and enriches wedding-vendor listings into a clean,
+        queryable master dataset.</p>
+      <ul class="case-stack"><li>Python</li><li>Scraping</li><li>Enrichment</li></ul>
     </article>
   </div>
 </section>
