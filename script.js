@@ -149,6 +149,8 @@
     { icon: '③', label: 'Project · HackAtion 2025 (won)', meta: 'PROJECT', run: () => location.href = 'case-hackation.html' },
     { icon: '④', label: 'Project · BLive EZY', meta: 'PROJECT', run: () => location.href = 'case-blive.html' },
     { icon: '⑤', label: 'Project · Open Credits', meta: 'PROJECT', run: () => location.href = 'case-opencredits.html' },
+    { icon: '⑥', label: 'Project · Visa Automation', meta: 'PROJECT', run: () => location.href = 'case-visa.html' },
+    { icon: '⑦', label: 'Project · ISL Sign Recognition', meta: 'PROJECT', run: () => location.href = 'case-isl.html' },
     { icon: '✉', label: 'Copy email — akshithy888@gmail.com', meta: 'COPY', run: () => copy('akshithy888@gmail.com') },
     { icon: '☎', label: 'Copy phone — +91 90195 33772', meta: 'COPY', run: () => copy('+919019533772') },
     { icon: '↗', label: 'Open LinkedIn', meta: 'LINK', run: () => window.open('https://linkedin.com/in/akshithyv', '_blank', 'noopener') },

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>ISL Sign-Language Recognition — Akshith Kumar Y V</title>
+<meta name="description" content="Real-time Indian Sign Language recognition — webcam to on-screen text and spoken audio. MediaPipe Holistic landmarks feed an LSTM classifier, trained on the INCLUDE dataset via a FastAPI backend.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css?v=10">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<a href="index.html#main" class="skip-link">Skip to content</a>
+
+<header class="topbar" role="banner">
+  <a href="index.html#top" class="brand" aria-label="Back to portfolio">
+    <span class="brand-mark" aria-hidden="true">A</span>
+    <span class="brand-mono">akshith.yv</span>
+  </a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="index.html#services"><span class="num">01</span> Services</a>
+    <a href="index.html#dossier"><span class="num">02</span> Work</a>
+    <a href="index.html#approach"><span class="num">03</span> Process</a>
+    <a href="index.html#capabilities"><span class="num">04</span> Stack</a>
+    <a href="index.html#contact"><span class="num">05</span> Contact</a>
+  </nav>
+  <div class="topbar-actions">
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" aria-pressed="false">
+      <span class="theme-toggle-track" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<article class="case-page">
+  <a href="index.html#automations" class="case-back">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11 7H3m0 0l4-4m-4 4l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+    Back to Work
+  </a>
+
+  <div class="case-page-meta">
+    <span class="case-page-num">Product</span>
+    <span class="pill pill-live"><span class="dot dot-live" aria-hidden="true"></span>LIVE</span>
+    <span>2026</span>
+    <span>·</span>
+    <span>ACCESSIBILITY / ML</span>
+  </div>
+
+  <h1 class="case-page-title">ISL Sign Recognition</h1>
+  <p class="case-page-tag">// webcam to recognized word — on-screen text and spoken audio, in real time</p>
+
+  <div class="case-page-kpis kpis-3">
+    <div class="kpi"><span class="kpi-num accent">71%</span><span class="kpi-label">held-out accuracy (v1)</span></div>
+    <div class="kpi"><span class="kpi-num">9</span><span class="kpi-label">signs trained (v1)</span></div>
+    <div class="kpi"><span class="kpi-num">RT</span><span class="kpi-label">real-time webcam</span></div>
+  </div>
+
+  <div class="case-meta-grid">
+    <div>
+      <h3>Role</h3>
+      <p>Solo builder — problem framing, model choice, and the full stack from webcam
+        capture to trained classifier to the speaking front end. Locked the v1 scope,
+        built it, trained it, merged it.</p>
+    </div>
+    <div>
+      <h3>Stack</h3>
+      <ul>
+        <li>Python</li><li>TensorFlow</li><li>MediaPipe</li><li>LSTM</li><li>FastAPI</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="case-section-label">Context</p>
+    <h2>Sign language is motion, not pictures</h2>
+    <p class="lede">
+      A deaf person signing "Good morning" isn't holding a pose — they're moving. Any
+      recognizer that looks at single frames misses the thing that actually carries
+      meaning. The product goal was simple to say and hard to do: point a webcam at
+      someone signing and have the screen say the word out loud.
+    </p>
+    <p>
+      Indian Sign Language has far less tooling than ASL, so this started from the
+      INCLUDE dataset (AI4Bharat) and word-level isolated signs — the realistic first
+      rung before continuous signing.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">Approach</p>
+    <h2>Landmarks over pixels, sequence over snapshot</h2>
+    <p>
+      Rather than feed raw video into a heavy vision model, the pipeline extracts
+      <strong>MediaPipe Holistic landmarks</strong> — hands, pose, and a face subset — and
+      classifies the <em>sequence</em> of those landmarks with an <strong>LSTM</strong>.
+      That keeps it light enough to run live on a laptop and focuses the model on the
+      motion that distinguishes one sign from another.
+    </p>
+    <ul>
+      <li><strong>Auto-segmentation:</strong> hands enter frame → buffer landmarks → hands pause → predict. A manual hold-to-sign mode is the fallback.</li>
+      <li><strong>Speaking output:</strong> the recognized word renders as text and is spoken via the Web Speech API — the "translation" the user actually feels.</li>
+      <li><strong>Tuned thresholds:</strong> the confidence gate sits at 0.3, not the naive 0.7 — at 9 classes the correct prediction often lands mid-confidence, and a high gate silently swallows it.</li>
+      <li><strong>Local + private:</strong> a FastAPI WebSocket backend with a plain HTML/JS split-panel front end; runs entirely on localhost.</li>
+    </ul>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">Architecture</p>
+    <h2>The live loop</h2>
+    <pre class="case-diagram">
+[ Webcam frames ]
+      <span class="arrow">↓</span>     <span class="label">MediaPipe Holistic → hand + pose + face landmarks</span>
+[ Landmark buffer ]  <span class="label">// auto-segment on motion → pause</span>
+      <span class="arrow">↓</span>
+[ LSTM classifier ]  <span class="label">// trained on INCLUDE, sequence in → sign out</span>
+      <span class="arrow">↓</span>
+[ Word ]  ──▶  on-screen text  +  Web Speech API audio
+    </pre>
+    <p>
+      v1 trained on the INCLUDE "Greetings" category — nine signs including Hello, Thank
+      you, and the Good morning/afternoon/evening/night set — reaching 71% held-out
+      accuracy, with the evening/night pair the weak classes and the other seven strong.
+    </p>
+  </section>
+
+  <p class="case-pull">
+    A dependency pin carries the whole thing: MediaPipe locked to 0.10.9, because the
+    classic Holistic API was removed in later versions and newer builds drag in a NumPy
+    that breaks TensorFlow. Getting the ML stack to simply coexist was half the battle.
+  </p>
+
+  <section class="case-section">
+    <p class="case-section-label">Outcome</p>
+    <h2>A working recognizer that speaks</h2>
+    <p>
+      v1 is built, trained, and merged: point the webcam, sign one of the trained
+      greetings, and the screen shows the word and says it aloud in real time. It's the
+      proof that the landmarks-plus-LSTM approach holds — and the base the class count
+      grows on.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">What's next</p>
+    <h2>Scale the vocabulary, then the sentence</h2>
+    <p>
+      The near-term path is more classes from the ~50-sign INCLUDE set and per-user
+      calibration to lift the weak pairs. The real horizon is continuous signing —
+      recognizing a stream of signs as a sentence rather than isolated words — which is a
+      genuinely harder sequence problem and the thing that makes it useful day to day.
+    </p>
+  </section>
+
+  <nav class="case-pager" aria-label="More work">
+    <a href="case-visa.html" class="prev">
+      <span class="pager-key">← Prev</span>
+      <span class="pager-title">Visa Automation</span>
+    </a>
+    <a href="index.html#automations" class="next">
+      <span class="pager-key">All work →</span>
+      <span class="pager-title">Back to Work</span>
+    </a>
+  </nav>
+</article>
+</main>
+
+<footer class="status-strip" role="contentinfo">
+  <span class="strip-cell strip-live">
+    <span class="dot dot-live" aria-hidden="true"></span>
+    <span>AVAILABLE FOR FREELANCE</span>
+  </span>
+  <span class="strip-cell"><span class="strip-key">LOC</span> Bengaluru</span>
+  <span class="strip-cell"><span class="strip-key">UTC</span> +5:30</span>
+  <span class="strip-cell"><span class="strip-key">CLK</span> <span data-clock>—</span></span>
+  <span class="strip-cell strip-cell-flex"></span>
+  <span class="strip-cell strip-build">© 2026 · Akshith Kumar Y V</span>
+</footer>
+
+<script src="script.js?v=10" defer></script>
+</body>
+</html>

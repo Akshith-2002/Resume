@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>Visa Application Automation — Akshith Kumar Y V</title>
+<meta name="description" content="An agent that logs in, fills the multi-tab application, and uploads documents on government visa portals. Claude vision solves CAPTCHAs and OCRs passports. Built for 50+ countries, live on Oman.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css?v=10">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<a href="index.html#main" class="skip-link">Skip to content</a>
+
+<header class="topbar" role="banner">
+  <a href="index.html#top" class="brand" aria-label="Back to portfolio">
+    <span class="brand-mark" aria-hidden="true">A</span>
+    <span class="brand-mono">akshith.yv</span>
+  </a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="index.html#services"><span class="num">01</span> Services</a>
+    <a href="index.html#dossier"><span class="num">02</span> Work</a>
+    <a href="index.html#approach"><span class="num">03</span> Process</a>
+    <a href="index.html#capabilities"><span class="num">04</span> Stack</a>
+    <a href="index.html#contact"><span class="num">05</span> Contact</a>
+  </nav>
+  <div class="topbar-actions">
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" aria-pressed="false">
+      <span class="theme-toggle-track" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<article class="case-page">
+  <a href="index.html#automations" class="case-back">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11 7H3m0 0l4-4m-4 4l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+    Back to Work
+  </a>
+
+  <div class="case-page-meta">
+    <span class="case-page-num">Automation</span>
+    <span class="pill pill-live"><span class="dot dot-live" aria-hidden="true"></span>LIVE</span>
+    <span>2026</span>
+    <span>·</span>
+    <span>GOV VISA PORTALS</span>
+  </div>
+
+  <h1 class="case-page-title">Visa Application Automation</h1>
+  <p class="case-page-tag">// an agent that applies for visas on government portals — login to document upload</p>
+
+  <div class="case-page-kpis kpis-3">
+    <div class="kpi"><span class="kpi-num accent">50+</span><span class="kpi-label">countries targeted</span></div>
+    <div class="kpi"><span class="kpi-num">7</span><span class="kpi-label">tab wizard automated</span></div>
+    <div class="kpi"><span class="kpi-num">0</span><span class="kpi-label">manual steps to submit</span></div>
+  </div>
+
+  <div class="case-meta-grid">
+    <div>
+      <h3>Role</h3>
+      <p>Solo builder — architecture, agent design, and delivery. Vibe-coded the
+        harness, designed the country-plugin pattern, and drove it live end-to-end
+        against a real government portal.</p>
+    </div>
+    <div>
+      <h3>Stack</h3>
+      <ul>
+        <li>Python</li><li>Playwright</li><li>Claude Vision</li><li>Postgres</li><li>Docker</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="case-section-label">Context</p>
+    <h2>Visa filing is high-volume, high-tedium, zero-creativity work</h2>
+    <p class="lede">
+      A travel operator files the same visa applications thousands of times — same
+      wizard, same fields, same document uploads, a fresh CAPTCHA every session. It's
+      exactly the kind of work a human should never have to do twice, and exactly the
+      kind of work most automation can't touch because the portals fight back.
+    </p>
+    <p>
+      Government portals are hostile to automation by design: image CAPTCHAs, session
+      popups, AJAX-loaded dropdowns, and fields that reject anything but Arabic script.
+      The goal was an agent that treats one portal as a plugin — get Oman working
+      end-to-end, then replicate the pattern to the next 50+ countries.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">Approach</p>
+    <h2>A shared harness, one plugin per country</h2>
+    <p>
+      The architecture separates what's universal from what's country-specific. A shared
+      <strong>core</strong> handles the browser, CAPTCHA solving, OCR, config, and the
+      database. Each country is a <strong>plugin</strong> that only encodes its own portal
+      flow and field map. Oman was the reference implementation.
+    </p>
+    <ul>
+      <li><strong>CAPTCHA:</strong> Claude vision reads the image challenge. A digits-only heuristic plus a 4× image upscale pushed accuracy to near-100%; refusals are handled with a refresh-and-retry.</li>
+      <li><strong>OCR &amp; profile:</strong> Claude vision OCRs the applicant's passport and residence card into a structured profile — including the <strong>Arabic</strong> name, place of birth, and place of issue that three portal fields require and reject Latin text for.</li>
+      <li><strong>Data store:</strong> profiles land in Postgres (Dockerised) and a per-applicant JSON the apply flow drives from.</li>
+      <li><strong>Navigation:</strong> the Liferay portal aborts on direct URLs, so the agent navigates by clicks only — through the eligibility wizard, the registered-user popup, and the second login into the application form.</li>
+    </ul>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">Architecture</p>
+    <h2>Documents in, filed application out</h2>
+    <pre class="case-diagram">
+[ Passport + residence card ]
+      <span class="arrow">↓</span>     <span class="label">Claude vision OCR → structured profile (incl. Arabic fields)</span>
+[ Postgres + customer.json ]
+      <span class="arrow">↓</span>
+[ Playwright agent ] ── login ──▶ <span class="label">CAPTCHA solved by Claude vision</span>
+      <span class="arrow">↓</span>
+[ 7-tab wizard ]  travel docs → additional details → document upload
+      <span class="arrow">↓</span>
+[ STOP before submit ]  <span class="label">// human reviews + clicks Submit</span>
+    </pre>
+    <p>
+      The 7-tab wizard fills automatically through the required-documents upload: 14
+      fields on the travel-document tab, business details on the next, then four document
+      uploads (each behind a hidden file input and a modal that has to be dismissed
+      between uploads). Then it stops.
+    </p>
+  </section>
+
+  <p class="case-pull">
+    The agent deliberately never clicks Submit. It fills everything, leaves the browser
+    open on the review screen, and hands the final decision to a human. Automating the
+    tedium is the win; automating accountability is not.
+  </p>
+
+  <section class="case-section">
+    <p class="case-section-label">Outcome</p>
+    <h2>Oman filed end-to-end, hands-off until review</h2>
+    <p>
+      For the Oman portal, an applicant's documents go in and a fully-filled application
+      comes out — login, CAPTCHA, eligibility, all seven tabs, and every required document
+      uploaded — with no human keystrokes until the review-and-submit step. The
+      country-plugin pattern means the next portals reuse the entire core; only the flow
+      map changes.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <p class="case-section-label">What I'd do differently</p>
+    <h2>Treat portal fragility as a first-class feature</h2>
+    <p>
+      Government sites throw transient server errors and change markup without notice. The
+      next iteration leans harder on resilience — checkpointing progress per tab, resuming
+      mid-application, and alerting a human the moment a portal genuinely breaks rather
+      than retrying into a wall.
+    </p>
+  </section>
+
+  <nav class="case-pager" aria-label="More work">
+    <a href="index.html#automations" class="prev">
+      <span class="pager-key">← All work</span>
+      <span class="pager-title">Back to Work</span>
+    </a>
+    <a href="case-isl.html" class="next">
+      <span class="pager-key">Next →</span>
+      <span class="pager-title">ISL Sign Recognition</span>
+    </a>
+  </nav>
+</article>
+</main>
+
+<footer class="status-strip" role="contentinfo">
+  <span class="strip-cell strip-live">
+    <span class="dot dot-live" aria-hidden="true"></span>
+    <span>AVAILABLE FOR FREELANCE</span>
+  </span>
+  <span class="strip-cell"><span class="strip-key">LOC</span> Bengaluru</span>
+  <span class="strip-cell"><span class="strip-key">UTC</span> +5:30</span>
+  <span class="strip-cell"><span class="strip-key">CLK</span> <span data-clock>—</span></span>
+  <span class="strip-cell strip-cell-flex"></span>
+  <span class="strip-cell strip-build">© 2026 · Akshith Kumar Y V</span>
+</footer>
+
+<script src="script.js?v=10" defer></script>
+</body>
+</html>

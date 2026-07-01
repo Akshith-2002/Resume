@@ -489,6 +489,8 @@ section { padding-block: var(--sp-9); }
 .worklog-item:hover { background: var(--panel-2); }
 .worklog-item header { display: flex; align-items: center; gap: 10px; margin-bottom: var(--sp-3); }
 .worklog-item h3 { font-family: var(--ff-display); font-weight: 700; font-size: 1.0625rem; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 8px; }
+.worklog-item h3 a { transition: color var(--dur-2); }
+.worklog-item h3 a:hover { color: var(--accent); }
 .worklog-item p { color: var(--ink-dim); font-size: 0.875rem; margin-bottom: var(--sp-4); }
 .worklog-item .case-stack li { margin-bottom: 0; }
 @media (max-width: 900px) { .worklog { grid-template-columns: repeat(2, 1fr); } }
